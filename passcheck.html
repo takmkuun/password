@@ -18,18 +18,24 @@
       font-size: 14px;
     }
 
-  .footer2{
+    .footer2{
     position: fixed;
     bottom: 0;
     right: 0;
     width: 30%;
     height: 80px;
-    color: rgb(34, 0, 255);
     text-align: right;
     line-height: 30px;
     font-size: 14px;
+    }
+    .footer2 img {
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
 
-}
+    .footer2 img:hover {
+      transform: scale(1.2);
+    }
 
     body {
       font-family: sans-serif;/*font*/
@@ -61,7 +67,7 @@
 </head>
 <body>
     <div class="footer1">
-    © 2025 takm's Website - All rights reserved
+     2025 takm's Website - All rights reserved
     </div>
     <div class="footer2">
     <a href="index.html"><img src="home.jpg" width="50" height="50">
