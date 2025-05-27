@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwordgenerater</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>パスワードの自動生成</h2>
+
+    <p id="output">ここに生成されたパスワードが表示されます</p>
+
+    <button onclick="generatePassword()">生成する</button>
+    <button onclick="copy()">コピー</button>
+
+  <script>
+    function generatePassword() {
+      const BIG = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const SMOLE = "abcdefghijklmnopqrstuvwxyz";
+      const numbers = "0123456789";
+      const symbols = "!@#$%&";
+
+      const all = BIG + SMOLE + numbers + symbols;
+      const length = Math.floor(Math.random() * 4) + 12; 
+
+      let password = [
+        randomChar(BIG),
+        randomChar(SMOLE),
+        randomChar(numbers),
+        randomChar(symbols),
+      ];
+
+      for (let i = password.length; i < length; i++) {
+        password.push(randomChar(all));/*password.length=4でありlengthになるまで残りをランダム生成*/
+      }
+
+      password = shuffle(password).join('');
+      document.getElementById("output").textContent = password;
+    }
+
+    function copy() {
+      const text = document.getElementById("output").textContent;
+      if (!text || text.includes("表示されます")) {
+        alert("コピーするパスワードがありません。");
+        return;
+      }
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert("コピー完了！");
+      });
+    }
+
+    function randomChar(str) {
+      return str.charAt(Math.floor(Math.random() * str.length));
+    }/*初めの大小数記の中から1つずつとる*/
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);/*正負に分け並べ替える*/
+    }
+  </script>
+    <div class="footer1">
+    © 2025  takm's Website - All rights reserved.
+    </div>
+
+    <div class="footer2">
+    <a href="password.html"><img src="home.jpg" width="50" height="50">
+    </div></a>
+
+</body>
+</html>
